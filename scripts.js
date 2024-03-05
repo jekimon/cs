@@ -1,4 +1,4 @@
-  function getSecId(e) {
-    const sId = e.target.id;
+  function getSecId(event) {
+    const sId = event.target.id;
     console.log('sId')
   }
