@@ -9,5 +9,5 @@ function addBlock(event) {
   const targetSection = document.querySelector(sectionId);
   let heading = document.createElement("h2");
   heading.innerHTML = "This is a heading block";
-  selectItem.append(heading)
+  targetSection.append(heading)
 }
