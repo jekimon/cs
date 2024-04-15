@@ -1,4 +1,4 @@
-var modal = document.getElementById("colorModal");
+var modal = document.querySelector("#colorModal");
 var span = document.getElementsByClassName("closeBtn")[0];
 
 function rgb2hex(rgb) {
@@ -14,10 +14,10 @@ function rgb2hex(rgb) {
 }
 
 function printColor() {
-	var getPreview = document.getElementById("gradientPreview");
+	var getPreview = document.querySelector("#gradientPreview");
 	var latestColor = getPreview.style.background;
 	// console.log(latestColor);
-	document.getElementById("gText").innerHTML = latestColor;
+	document.querySelector("#gText").innerHTML = latestColor;
 }
 
 function delIcon() {
@@ -40,8 +40,8 @@ function delIcon() {
 function getColorId(event) {
 	event.preventDefault();
 	var ol = event.target.id;
-	document.getElementById("gTabId").innerHTML = ol;
-	document.getElementById("text-helper").style.display = "flex";
+	document.querySelector("#gTabId").innerHTML = ol;
+	document.querySelector("#text-helper").style.display = "flex";
 	var el = document.getElementById(ol);
 	var st = window.getComputedStyle(el, null);
 	var tr = st.getPropertyValue("background") || "FAIL";
@@ -101,9 +101,9 @@ function getColorId(event) {
 		const clrStp = hex + " " + percent + "%";
 		ColorStops.push(clrStp);
 
-		const ColorContainer = document.getElementById("ColorTabs");
-		const ColorContents = document.getElementById("ColorContents");
-		const addtab = document.getElementById("addColorTab");
+		const ColorContainer = document.querySelector("#ColorTabs");
+		const ColorContents = document.querySelector("#ColorContents");
+		const addtab = document.querySelector("#addColorTab");
 		const newTabIndex = l + 1;
 		const newColorId = "color" + (l + 1);
 
@@ -191,31 +191,31 @@ function getColorId(event) {
 
 		ColorContainer.appendChild(ColorTab);
 		ColorContents.appendChild(ColorContent);
-		document.getElementById("tab-color1").click();
+		document.querySelector("#tab-color1").click();
 	}
 
 	const clr_stops = ColorStops.toString();
 	const gradientstops = clr_stops.replaceAll(",", ", ");
-	const gradientBox = document.getElementById("gradientPreview");
-	const degControl = document.getElementById("deg");
-	const degDisplay = document.getElementById("degDisplay");
-	const degPreview = document.getElementById("degCircle");
-	const colorsTabs = document.getElementById("ColorTabGroup");
-	const degControls = document.getElementById("degWrapper");
-	const degController = document.getElementById("degController");
-	const deg_colors = document.getElementById("colorSet");
-	const colPositions = document.getElementById("ColorPos");
+	const gradientBox = document.querySelector("#gradientPreview");
+	const degControl = document.querySelector("#deg");
+	const degDisplay = document.querySelector("#degDisplay");
+	const degPreview = document.querySelector("#degCircle");
+	const colorsTabs = document.querySelector("#ColorTabGroup");
+	const degControls = document.querySelector("#degWrapper");
+	const degController = document.querySelector("#degController");
+	const deg_colors = document.querySelector("#colorSet");
+	const colPositions = document.querySelector("#ColorPos");
 
-	var getPreview = document.getElementById("gradientPreview");
+	var getPreview = document.querySelector("#gradientPreview");
 	// color type controls
 	if (gType == "linear-gradient") {
 		var currentGradient = gType + "(" + gDeg + "deg, " + gradientstops + ")";
-		const linearButton = document.getElementById("linearGradient");
-		const degText = document.getElementById("degValue");
-		const degAngle = document.getElementById("indicator");
+		const linearButton = document.querySelector("#linearGradient");
+		const degText = document.querySelector("#degValue");
+		const degAngle = document.querySelector("#indicator");
 		degText.innerHTML = gDeg;
 		degAngle.style.transform = "rotate(" + degText.innerHTML + "deg)";
-		const curDeg = document.getElementById("degValue");
+		const curDeg = document.querySelector("#degValue");
 		gradientBox.style.background = currentGradient;
 		degPreview.style.transform = "rotate(" + (gDeg - 180) + "deg)";
 		degControl.value = gDeg;
@@ -231,7 +231,7 @@ function getColorId(event) {
 	} else if (gType == "radial-gradient") {
 		const rStops = "73.50% 73.50% at 50.00% 50.00%, ";
 		var currentGradient = gType + "(" + rStops + gradientstops + ")";
-		const radialButton = document.getElementById("radialGradient");
+		const radialButton = document.querySelector("#radialGradient");
 		gradientBox.style.background = currentGradient;
 		radialButton.checked = true;
 		deg_colors.style.display = "flex";
@@ -242,8 +242,8 @@ function getColorId(event) {
 		radialButton.click();
 		printColor();
 	} else if (gType == "solid-color") {
-		const solidButton = document.getElementById("solidColor");
-		const color1 = document.getElementById("input-color1").value;
+		const solidButton = document.querySelector("#solidColor");
+		const color1 = document.querySelector("#input-color1").value;
 		solidButton.checked = true;
 		deg_colors.style.display = "none";
 		colorsTabs.style.display = "none";
@@ -251,7 +251,7 @@ function getColorId(event) {
 		degController.style.display = "none";
 		colPositions.style.display = "none";
 		gradientBox.style.background = color1;
-		document.getElementById("tab-color1").click();
+		document.querySelector("#tab-color1").click();
 		solidButton.click();
 		printColor();
 	}
@@ -277,8 +277,8 @@ function setColor() {
 	}
 	const getColors = allColors.toString();
 	const colorStops = getColors.replaceAll(",", ", ");
-	const gradientBox = document.getElementById("gradientPreview");
-	const setDeg = document.getElementById("degValue").innerHTML;
+	const gradientBox = document.querySelector("#gradientPreview");
+	const setDeg = document.querySelector("#degValue").innerHTML;
 	const colorTabs = document.querySelectorAll(".tablinks");
 
 	for (i = 0; i < colorTabs.length; i++) {
@@ -291,16 +291,16 @@ function setColor() {
 	}
 
 	// color type tab controls
-	const linear = document.getElementById("linearGradient").checked;
-	const radial = document.getElementById("radialGradient").checked;
-	const solid = document.getElementById("solidColor").checked;
-	const colorsTabs = document.getElementById("ColorTabGroup");
-	const degControls = document.getElementById("degWrapper");
-	const colPositions = document.getElementById("ColorPos");
-	const degController = document.getElementById("degController");
-	const deg_colors = document.getElementById("colorSet");
+	const linear = document.querySelector("#linearGradient").checked;
+	const radial = document.querySelector("#radialGradient").checked;
+	const solid = document.querySelector("#solidColor").checked;
+	const colorsTabs = document.querySelector("#ColorTabGroup");
+	const degControls = document.querySelector("#degWrapper");
+	const colPositions = document.querySelector("#ColorPos");
+	const degController = document.querySelector("#degController");
+	const deg_colors = document.querySelector("#colorSet");
 
-	var getPreview = document.getElementById("gradientPreview");
+	var getPreview = document.querySelector("#gradientPreview");
 	if (linear) {
 		const setGradient = "linear-gradient(" + setDeg + "deg, " + colorStops + ")";
 		deg_colors.style.display = "flex";
@@ -316,10 +316,10 @@ function setColor() {
 			co_pos.style.display = "flex";
 		}
 		if (colorTabs.length < 2) {
-			document.getElementById("addColorTab").click();
+			document.querySelector("#addColorTab").click();
 		}
 		const latestColor = getPreview.style.background;
-		document.getElementById("gText").innerHTML = setGradient;
+		document.querySelector("#gText").innerHTML = setGradient;
 	} else if (radial) {
 		const setGradient = "radial-gradient(" + colorStops + ")";
 		deg_colors.style.display = "flex";
@@ -335,12 +335,12 @@ function setColor() {
 		}
 		gradientBox.style.background = setGradient;
 		if (colorTabs.length < 2) {
-			document.getElementById("addColorTab").click();
+			document.querySelector("#addColorTab").click();
 		}
 		const latestColor = getPreview.style.background;
-		document.getElementById("gText").innerHTML = setGradient;
+		document.querySelector("#gText").innerHTML = setGradient;
 	} else if (solid) {
-		const setGradient = document.getElementById("tab-color1").style.background;
+		const setGradient = document.querySelector("#tab-color1").style.background;
 		const del1Icon = document.querySelector("#cont-color1 .remove");
 		del1Icon.style.display = "none";
 		deg_colors.style.display = "none";
@@ -348,7 +348,7 @@ function setColor() {
 		degControls.style.display = "none";
 		degController.style.display = "none";
 		colPositions.style.display = "none";
-		document.getElementById("tab-color1").click();
+		document.querySelector("#tab-color1").click();
 		const CoPos = document.querySelectorAll(".colorPos");
 		for (i = 0; i < CoPos.length; i++) {
 			const co_pos = CoPos[i];
@@ -356,23 +356,23 @@ function setColor() {
 		}
 		gradientBox.style.background = setGradient;
 		if (colorTabs.length < 2) {
-			document.getElementById("addColorTab").click();
+			document.querySelector("#addColorTab").click();
 		}
 		const latestColor = getPreview.style.background;
-		document.getElementById("gText").innerHTML = setGradient;
+		document.querySelector("#gText").innerHTML = setGradient;
 	}
 }
 
 setColor();
 
-const degrees = document.getElementById("deg");
-const display = document.getElementById("degDisplay");
+const degrees = document.querySelector("#deg");
+const display = document.querySelector("#degDisplay");
 display.value = degrees.value;
 degrees.addEventListener(
 	"input",
 	function () {
 		display.value = degrees.value;
-		document.getElementById("degCircle").style.transform =
+		document.querySelector("#degCircle").style.transform =
 			"rotate(" + (degrees.value - 180) + "deg)";
 	},
 	false
@@ -398,8 +398,8 @@ function setColorHex() {
 	setColor();
 }
 
-var colorPreview = document.getElementById("gradientPreview");
-var textHelper = document.getElementById("gText");
+var colorPreview = document.querySelector("#gradientPreview");
+var textHelper = document.querySelector("#gText");
 
 function addTab() {
 	const allTabs = document.querySelectorAll(".colorTabContent");
@@ -410,9 +410,9 @@ function addTab() {
 	var random = "rgb(" + r + "," + g + "," + b + ")";
 	var hex = rgb2hex(random);
 
-	const ColorContainer = document.getElementById("ColorTabs");
-	const ColorContents = document.getElementById("ColorContents");
-	const addtab = document.getElementById("addColorTab");
+	const ColorContainer = document.querySelector("#ColorTabs");
+	const ColorContents = document.querySelector("#ColorContents");
+	const addtab = document.querySelector("#addColorTab");
 	const newTabIndex = tabLength + 1;
 	const newColorId = "color" + (tabLength + 1);
 
@@ -563,7 +563,7 @@ function delColor() {
 	}
 
 	const colorTabs = document.querySelectorAll(".tablinks");
-	const addtab = document.getElementById("addColorTab");
+	const addtab = document.querySelector("#addColorTab");
 	const tabLength = colorTabs.length - 1;
 	if (tabLength < 10) {
 		addtab.style.display = "flex";
@@ -608,8 +608,8 @@ function delColor() {
 	setColor();
 }
 
-var degIndicator = document.getElementById("indicator");
-var degDisplayText = document.getElementById("degValue");
+var degIndicator = document.querySelector("#indicator");
+var degDisplayText = document.querySelector("#degValue");
 degIndicator.style.transform = "rotate(" + degDisplayText.innerHTML + "deg)";
 
 function decrementCurrentValue() {
@@ -627,7 +627,7 @@ function decrementCurrentValue() {
 		.replace("linear-gradient(", "linear-gradient(" + intCurrentValue + "deg, ")
 		.replace(currentDeg, "");
 	colorPreview.style.background = newGradColor;
-	document.getElementById("gText").innerHTML = newGradColor;
+	document.querySelector("#gText").innerHTML = newGradColor;
 }
 
 function incrementCurrentValue() {
@@ -646,7 +646,7 @@ function incrementCurrentValue() {
 		.replace("linear-gradient(", newGradDeg)
 		.replace(currentDeg, "");
 	colorPreview.style.background = newGradColor;
-	document.getElementById("gText").innerHTML = newGradColor;
+	document.querySelector("#gText").innerHTML = newGradColor;
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -663,15 +663,15 @@ span.onclick = function () {
 		const cont = conts[i];
 		cont.remove();
 	}
-	const colorModalTrigger = document.getElementById("gTabId").innerHTML;
+	const colorModalTrigger = document.querySelector("#gTabId").innerHTML;
 	const colorModalBtn = document.getElementById(colorModalTrigger);
-	const colorModalProps = document.getElementById("gText").innerHTML;
-	const addtab = document.getElementById("addColorTab");
+	const colorModalProps = document.querySelector("#gText").innerHTML;
+	const addtab = document.querySelector("#addColorTab");
 	addtab.removeAttribute("style");
 	degIndicator.style.transform = "rotate(180deg)";
 	degDisplayText.innerHTML = "180";
 	colorModalBtn.style.background = colorModalProps;
-	document.getElementById("text-helper").style.display = "none";
+	document.querySelector("#text-helper").style.display = "none";
 };
 
 window.onclick = function (event) {
@@ -688,14 +688,14 @@ window.onclick = function (event) {
 			const cont = conts[i];
 			cont.remove();
 		}
-		const colorModalTrigger = document.getElementById("gTabId").innerHTML;
+		const colorModalTrigger = document.querySelector("#gTabId").innerHTML;
 		const colorModalBtn = document.getElementById(colorModalTrigger);
-		const colorModalProps = document.getElementById("gText").innerHTML;
-		const addtab = document.getElementById("addColorTab");
+		const colorModalProps = document.querySelector("#gText").innerHTML;
+		const addtab = document.querySelector("#addColorTab");
 		addtab.removeAttribute("style");
 		degIndicator.style.transform = "rotate(180deg)";
 		degDisplayText.innerHTML = "180";
 		colorModalBtn.style.background = colorModalProps;
-		document.getElementById("text-helper").style.display = "none";
+		document.querySelector("#text-helper").style.display = "none";
 	}
 };
